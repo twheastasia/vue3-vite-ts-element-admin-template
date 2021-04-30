@@ -3,7 +3,7 @@
  * @version: 
  * @Author: weihai.tang
  * @Date: 2021-04-28 16:07:30
- * @LastEditTime: 2021-04-30 15:08:19
+ * @LastEditTime: 2021-04-30 18:17:12
  */
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
@@ -13,7 +13,8 @@ const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    roles: []
   }
 }
 
@@ -31,6 +32,10 @@ const mutations = {
   },
   SET_AVATAR: (state: any, avatar: string) => {
     state.avatar = avatar
+  },
+  SET_ROLES: (state: any, roles: string[]) => {
+    state.roles = roles
+    console.log('Your permissions are: ', roles)
   }
 }
 
@@ -42,6 +47,7 @@ const actions = {
       login({ username: username.trim(), password: password }).then(response => {
         const { data }: any = response
         commit('SET_TOKEN', data.token)
+        
         setToken(data.token)
         resolve(data)
       }).catch(error => {
@@ -60,10 +66,10 @@ const actions = {
           return reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
-
+        const { name, avatar, roles } = data
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
+        commit('SET_ROLES', roles)
         resolve(data)
       }).catch(error => {
         reject(error)

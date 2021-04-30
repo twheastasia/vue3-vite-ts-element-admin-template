@@ -34,6 +34,11 @@ router.beforeEach(async (to, from, next) => {
         try {
           // get user info
           await store.dispatch('user/getInfo');
+          // 生成可访问的路由表
+          await store.dispatch('GenerateRoutes', { roles: store.getters.roles });
+          // 动态添加可访问路由表
+          // 原来是addRoutes方法，现在没有s了
+          router.addRoute(store.getters.addRouters);
           next();
         } catch (error) {
           // remove token and go to login page to re-login

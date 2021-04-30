@@ -16,7 +16,10 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
-            <router-link to="/">
+            <el-dropdown-item>
+              <span>Hi, {{ name }}</span>
+            </el-dropdown-item>
+            <router-link to="/dashboard">
               <el-dropdown-item>Home</el-dropdown-item>
             </router-link>
             <a target="_blank" href="https://github.com/twheastasia/vue3-vite-ts-element-admin-template">
@@ -50,7 +53,7 @@ export default defineComponent({
     const route = useRoute()
     const router = useRouter()
     return {
-      ...useMapGetters(['sidebar', 'avatar']),
+      ...useMapGetters(['sidebar', 'avatar', 'name']),
       toggleSideBar() {
         store.dispatch('app/toggleSideBar')
       },

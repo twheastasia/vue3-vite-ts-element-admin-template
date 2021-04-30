@@ -35,11 +35,6 @@ export const constantRoutes: any = [
   },
 
   {
-    path: '/404',
-    component: () => import('@/views/404.vue'),
-  },
-
-  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
@@ -142,17 +137,25 @@ export const constantRoutes: any = [
         meta: { title: 'menu2' }
       }
     ]
-  },
+  }
+]
 
+export const asyncRouterMap = [
   {
     path: '/external-link',
     component: Layout,
+    meta: { title: '额外链接', roles: ['admin'] },
     children: [
       {
         path: 'https://github.com/twheastasia/vue3-vite-ts-element-admin-template',
-        meta: { title: 'External Link', icon: 'link' }
+        meta: { title: 'External Link', icon: 'link', roles: ['admin'] }
       }
     ]
+  },
+
+  {
+    path: '/404',
+    component: () => import('@/views/404.vue'),
   },
 
   // 404 page must be placed at the end !!!

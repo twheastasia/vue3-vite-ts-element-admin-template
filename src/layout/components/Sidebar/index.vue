@@ -1,3 +1,10 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: weihai.tang
+ * @Date: 2021-04-28 16:07:30
+ * @LastEditTime: 2021-04-30 18:38:19
+-->
 <template>
   <div :class="{ 'has-logo': showLogo }">
     <logo v-if="showLogo" :collapse="isCollapse" />
@@ -13,7 +20,7 @@
         mode="vertical"
       >
         <sidebar-item
-          v-for="route in routes"
+          v-for="route in permissionRouters"
           :key="route.path"
           :item="route"
           :base-path="route.path"
@@ -25,8 +32,8 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { useRoute } from 'vue-router'
+import { useStore, mapGetters } from 'vuex'
 import Logo from './Logo.vue'
 import SidebarItem from './SidebarItem.vue'
 import variables from '@/styles/variables.scss'
@@ -34,7 +41,6 @@ import variables from '@/styles/variables.scss'
 export default defineComponent({
   components: { SidebarItem, Logo },
   setup() {
-    const router = useRouter()
     const store = useStore()
     const route = useRoute()
     const activeMenu = computed(() => {
@@ -47,14 +53,19 @@ export default defineComponent({
     })
 
     return {
-      routes: computed(() => router.options.routes),
       activeMenu,
       showLogo: computed(() => store.state.settings.sidebarLogo),
       isCollapse: computed(() => !store.getters.sidebar.opened)
     }
   },
+  mounted() {
+    console.log(this.permissionRouters)
+  },
   computed: {
-    variables: () => { return variables }
+    variables: () => { return variables },
+    ...mapGetters([
+      'permissionRouters'
+    ])
   }
 })
 </script>
