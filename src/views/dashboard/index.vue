@@ -1,0 +1,38 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: weihai.tang
+ * @Date: 2021-04-28 16:07:30
+ * @LastEditTime: 2021-04-30 16:06:58
+-->
+<template>
+  <div class="dashboard-container">
+    <div class="dashboard-text">name: {{ name }}</div>
+  </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { mapGetters } from 'vuex';
+
+export default defineComponent({
+  name: 'Dashboard',
+  computed: {
+    ...mapGetters([
+      'name'
+    ])
+  }
+})
+</script>
+
+<style lang="scss" scoped>
+.dashboard {
+  &-container {
+    margin: 30px;
+  }
+  &-text {
+    font-size: 30px;
+    line-height: 46px;
+  }
+}
+</style>
