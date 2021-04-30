@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: weihai.tang
+ * @Date: 2021-04-28 16:07:30
+ * @LastEditTime: 2021-04-30 17:39:10
+ */
 
 import { MockMethod } from 'vite-plugin-mock';
 
@@ -31,7 +38,7 @@ const mocks: MockMethod[] = [
   {
     url: '/vue-admin-template/user/login',
     method: 'post',
-    response: ({ body }) => {
+    response: ({ body }: any) => {
       const { username } = body
       const token = tokens[username]
 
@@ -53,7 +60,7 @@ const mocks: MockMethod[] = [
   {
     url: '/vue-admin-template/user/info',
     method: 'get',
-    response: ({ query }) => {
+    response: ({ query }: any) => {
       const { token } = query
       const info = users[token]
 
@@ -75,7 +82,7 @@ const mocks: MockMethod[] = [
   {
     url: '/vue-admin-template/user/logout',
     method: 'post',
-    response: _ => {
+    response: (_: any) => {
       return {
         code: 20000,
         data: 'success'

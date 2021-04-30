@@ -1,3 +1,10 @@
+/*
+ * @Descripttion: 
+ * @version: 
+ * @Author: weihai.tang
+ * @Date: 2021-04-28 16:07:30
+ * @LastEditTime: 2021-04-30 17:39:00
+ */
 import * as Mock from "mockjs"
 import { MockMethod } from 'vite-plugin-mock';
 
@@ -16,7 +23,7 @@ export default [
   {
     url: '/vue-admin-template/table/list',
     method: 'get',
-    response: config => {
+    response: (config: any) => {
       const items = data.items
       return {
         code: 20000,
