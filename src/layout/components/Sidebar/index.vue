@@ -3,7 +3,7 @@
  * @version: 
  * @Author: weihai.tang
  * @Date: 2021-04-28 16:07:30
- * @LastEditTime: 2021-04-30 18:38:19
+ * @LastEditTime: 2021-05-06 15:58:05
 -->
 <template>
   <div :class="{ 'has-logo': showLogo }">
@@ -58,9 +58,9 @@ export default defineComponent({
       isCollapse: computed(() => !store.getters.sidebar.opened)
     }
   },
-  mounted() {
-    console.log(this.permissionRouters)
-  },
+  // mounted() {
+  //   console.log(this.permissionRouters)
+  // },
   computed: {
     variables: () => { return variables },
     ...mapGetters([
