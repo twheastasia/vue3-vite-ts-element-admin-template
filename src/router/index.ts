@@ -1,5 +1,6 @@
 
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { ADMIN_PERMISSIONS } from '@/utils/auth'
 
 /* Layout */
 import Layout from '@/layout/index.vue'
@@ -144,11 +145,11 @@ export const asyncRouterMap = [
   {
     path: '/external-link',
     component: Layout,
-    meta: { title: '额外链接', roles: ['admin'] },
+    meta: { title: '额外链接', roles: [ADMIN_PERMISSIONS.ADMIN.en] },
     children: [
       {
         path: 'https://github.com/twheastasia/vue3-vite-ts-element-admin-template',
-        meta: { title: 'External Link', icon: 'link', roles: ['admin'] }
+        meta: { title: 'External Link', icon: 'link', roles: [ADMIN_PERMISSIONS.ADMIN.en] }
       }
     ]
   },

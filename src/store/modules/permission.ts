@@ -3,11 +3,10 @@
  * @version: 
  * @Author: weihai.tang
  * @Date: 2021-04-30 18:06:08
- * @LastEditTime: 2021-04-30 18:38:43
+ * @LastEditTime: 2021-05-06 10:05:33
  */
 import { asyncRouterMap, constantRoutes } from '@/router'
-
-const ADMIN = 'ADMIN'
+import { ADMIN_PERMISSIONS } from '@/utils/auth'
 
 /**
  * 通过meta.role判断是否与当前用户权限匹配
@@ -57,7 +56,7 @@ const permission = {
       return new Promise(resolve => {
         const { roles } = data
         let accessedRouters
-        if (roles.includes(ADMIN.toLocaleLowerCase())) {
+        if (roles.includes(ADMIN_PERMISSIONS.ADMIN.en)) {
           accessedRouters = asyncRouterMap
         } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, roles)

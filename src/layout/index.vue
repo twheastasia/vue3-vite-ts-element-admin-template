@@ -3,7 +3,7 @@
  * @version: 
  * @Author: weihai.tang
  * @Date: 2021-04-28 16:07:30
- * @LastEditTime: 2021-04-30 15:49:06
+ * @LastEditTime: 2021-05-06 10:07:32
 -->
 <template>
   <div :class="classObj" class="app-wrapper">
@@ -21,6 +21,7 @@
 <script>
 import { Navbar, Sidebar, AppMain } from './components'
 import { defineComponent } from 'vue';
+import store from '@/store'
 
 const WIDTH = 992;
 

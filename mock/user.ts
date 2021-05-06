@@ -3,7 +3,7 @@
  * @version: 
  * @Author: weihai.tang
  * @Date: 2021-04-28 16:07:30
- * @LastEditTime: 2021-04-30 17:39:10
+ * @LastEditTime: 2021-05-06 10:06:14
  */
 
 import { MockMethod } from 'vite-plugin-mock';
@@ -19,13 +19,13 @@ const tokens: Record<string, { token: string }> = {
 
 const users: Record<string, { roles: string[], introduction: string, avatar: string, name: string }> = {
   'admin-token': {
-    roles: ['admin'],
+    roles: ['ADMIN'],
     introduction: 'I am a super administrator',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Super Admin'
   },
   'editor-token': {
-    roles: ['editor'],
+    roles: ['EDITOR'],
     introduction: 'I am an editor',
     avatar: 'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
     name: 'Normal Editor'
